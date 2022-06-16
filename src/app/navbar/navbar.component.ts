@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertifyService } from '../services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   model: any = {};
 
-  constructor(public authService : AuthService, private router: Router) { }
+  constructor(public authService : AuthService, private router: Router, private aletify: AlertifyService) { }
 
   ngOnInit(): void {
   }
@@ -21,12 +22,13 @@ export class NavbarComponent implements OnInit {
     // console.log("form submitted..");
     // console.log(this.model);
     this.authService.login(this.model).subscribe(next => {
-      console.log("login başarılı..");
-
+      //console.log("login başarılı..");
+      this.aletify.success("login başarılı");
       this.router.navigate(['/members']);
     }, error => {
       //console.log("login hatalı..");
-      console.log(error);
+      //console.log(error);
+      this.aletify.error(error);
 
     })
 
@@ -43,7 +45,9 @@ export class NavbarComponent implements OnInit {
   // html'de kullanılacak.. => (click)="logout()"
   logout(){
     localStorage.removeItem("token");
-    console.log("logout");
+
+    //console.log("logout");
+    this.aletify.warning("logout");
 
     this.model.username = ""; // html'de [(ngModel)]="model.username" olduğu için input da sıfırlanır..
     this.model.password = ""; // html'de [(ngModel)]="model.password" olduğu için input da sıfırlanır..

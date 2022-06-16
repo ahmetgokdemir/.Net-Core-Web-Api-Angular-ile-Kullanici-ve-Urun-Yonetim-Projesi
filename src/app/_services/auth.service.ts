@@ -27,6 +27,7 @@ export class AuthService {
 
           // this.decodedToken = this.jwtHelper.decodeToken(result.token);
           // bunu kullanırsak sayfa refresh olunca bu bilgi kaybedilir o yüzden app.component kısmında set edildi.. dolayısıyla bu koda gerek yok..
+          this.decodedToken = this.jwtHelper.decodeToken(result.token);  // logout olup sayfayı refresh edince username bilgisi gelmiyor o yüzden tekrar bu kod aktif edildi..
 
           // const expirationDate = this.jwtHelper.getTokenExpirationDate(result.token);
           // const isExpired = this.jwtHelper.isTokenExpired(result.token);
