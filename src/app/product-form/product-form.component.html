@@ -1,0 +1,27 @@
+<div>
+  <form ngNativeValidate #form="ngForm" (ngSubmit)="addProduct()">
+  <div class="form-group">
+    <label for="name">name</label>
+    <input required minlength="5" type="text" #name="ngModel" [(ngModel)]="model.name" class="form-control" name="name">
+    <div class="alert alert-danger" *ngIf="name.invalid && name.touched"> <!-- eklendi.. title.invalid && title.touched => #title="ngModel" ^den gelir.. -->
+      <p *ngIf="name.errors?.required">gerekli alan</p>
+      <p *ngIf="name.errors?.minlength">min 5 karakter girmelisiniz.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="price">price</label>
+    <input required  min="0" type="number"  #price="ngModel" [(ngModel)]="model.price" class="form-control" name="price">
+    <div class="alert alert-danger" *ngIf="price.invalid && price.touched"> <!-- eklendi.. title.invalid && title.touched => #title="ngModel" ^den gelir.. -->
+      <p *ngIf="price.errors?.required">gerekli alan</p>
+      <p *ngIf="price.errors?.min">0 üzeri sayı giriniz</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox"  [(ngModel)]="model.isActive" class="custom-control-input" id="isActive" name="isActive">
+      <label for="isActive" class="custom-control-label"></label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" >Save Product</button>
+</form>
+</div>

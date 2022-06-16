@@ -1,0 +1,48 @@
+<!-- <h3 class="bg-primary text-white p-2">{{getName()}} Kategorisi</h3> -->
+
+<div class="container" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col-md-7">
+
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let p of products" [class.bg-secondary]="p.isActive==false"> <!-- her bir p objesini kontrol edilecek isActive alanı false ise ilgili kaydın satırını gri background yapılabilinir-->
+            <td>{{p.productId}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td>
+              <button class="btn btn-primary" (click)="onSelectProduct(p)">Edit</button> <!-- liste üzerinden herhangi bir elemanın edit buttonuna tıklanınca o eleman obje içerisinde saklanmalıdır-->
+              <button class="btn btn-danger" (click)="deleteProduct(p)">Delete</button>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+
+    </div>
+    <div class="col-md-5">
+
+      <product-details [product]="selectedProduct" [products]="products"></product-details> <!-- [product],  @Input() product: any;'dir (product-details.component.ts)..  -->
+      <hr class="my-3">
+      <product-form [products]="products"></product-form>
+
+      <!-- product-form içerisinde ekleme yaptıktan sonra listeye veriyi eklemek için product.comp.html de bulunan products listeyi ilgili componentte (product-form) parametre olarak gönderdik ve Input veri olarak karşılandı ki eklenen veri products listesine de eklensin..
+
+      Aynısını product-detail de güncelleme işlemi yapıldıktan sonra ve ilgili products listesini güncellemek için product.comp.html de bulunan products listeyi ilgili componentte (product-details) parametre olarak göndereceğiz ve Input veri olarak karşılanacak ki güncellenen veri products listesinde de güncellensin..-->
+
+    </div>
+  </div>
+</div>
+
+
