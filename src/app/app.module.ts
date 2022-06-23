@@ -22,6 +22,8 @@ import { ErrorInterceptor } from './_services/error.intercaptor';
 import { JwtModule } from "@auth0/angular-jwt";
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolver/member-edit.resolver';
 
 
 export function tokenGetter() {
@@ -43,7 +45,8 @@ export function tokenGetter() {
     MessagesComponent,
     NotfoundComponent,
     MemberDetailsComponent,
-    PhotoGalleryComponent
+    PhotoGalleryComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ export function tokenGetter() {
   providers: [
     AlertifyService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, // interceptor'ı uygulamaya dahil etmek.. Servise tanımlaması.. multi: true birden fazla interceptor kullanımına izin verildi..
-    AuthGuard
+    AuthGuard,
+    MemberEditResolver
   ],
   bootstrap: [AppComponent]
 })

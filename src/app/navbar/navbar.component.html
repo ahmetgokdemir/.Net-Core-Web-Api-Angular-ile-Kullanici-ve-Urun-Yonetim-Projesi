@@ -25,7 +25,7 @@
         </li> -->
         <li class="navbar-nav">
           <!-- <a href="" class="nav-link">UserName</a> -->
-          <a href="" class="nav-link">{{ authService.decodedToken.unique_name}}</a> <!-- app.component kısmında onInıt (diğer componentler çağırılmadan önce çalışır) kısmında set edildi..-->
+          <a [routerLink]="['/members/edit']" class="nav-link">{{ authService.decodedToken.unique_name }}</a> <!-- app.component kısmında onInıt (diğer componentler çağırılmadan önce çalışır) kısmında set edildi..-->
 
         </li>
         <li class="navbar-nav">
