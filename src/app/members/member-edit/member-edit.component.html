@@ -12,12 +12,12 @@
                       <p>{{ user?.country }}, {{ user?.city }}</p>
                   </div>
                   <div>
-                      <strong>Age</strong>
-                      <p>{{ user?.age }}</p>
+                    <strong>Created Date</strong>
+                    <p>{{ user?.created |  date: 'shortDate'}}</p>
                   </div>
                   <div>
-                      <strong>Last Active</strong>
-                      <p>{{ user?.lastActive }}</p>
+                    <strong>Last Active</strong>
+                    <p>{{ user?.lastActive | timeago }}</p>
                   </div>
               </div>
           </div>

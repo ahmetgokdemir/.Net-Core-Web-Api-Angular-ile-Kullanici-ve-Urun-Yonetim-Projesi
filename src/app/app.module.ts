@@ -24,7 +24,7 @@ import { MemberDetailsComponent } from './members/member-details/member-details.
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolver/member-edit.resolver';
-
+import {TimeagoModule} from 'ngx-timeago';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -53,6 +53,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule, //  ngModel kullanabilmek için FormModule'ü app.module.ts'e eklenmeli. ***
+    TimeagoModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
