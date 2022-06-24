@@ -4,7 +4,13 @@
           <div *ngFor="let user of users" class="col-lg-3 col-md-4 col-sm-6 col-12">
               <div class="user_profile_info">
                   <div class="user-up-info">
-                       <img src="{{ user.image.name }}" alt="">
+                       <!-- <img src="{{ user.image.name }}" alt=""> -->
+
+                       <img *ngIf="user.imageUrl" src="{{ user.imageUrl }}" alt="">
+                       <img *ngIf="!user.imageUrl" src="{{ 'assets/user.png'  }}" alt="">
+                       <!-- <img src="{{ user.imageUrl || 'assets/user.jpg' }}" alt=""> -->
+
+                       <!-- member-list.component.ts -> this.userService.getUsers() -> return this.http.get<User[]>(this.baseUrl); -> UserConroller.cs -> public async Task<IActionResult> GetUsers() -> UserForListDTO burada değişiklik yapılacak -->
                       <h3>{{ user.name }}, <small>{{ user.age }}</small></h3>
                       <h4 style="height: 20px;">{{ user.country }}, {{ user.city }}</h4>
                       <button class="btn btn-outline-primary btn-sm">

@@ -3,7 +3,7 @@
 @import "~alertifyjs/build/css/themes/bootstrap.min.css";
 
 body {
-  line-height: 1;
+  /*line-height: 1;*/
   font-family: 'Source Sans Pro', sans-serif;
   overflow-x: hidden;
   font-weight: 400;

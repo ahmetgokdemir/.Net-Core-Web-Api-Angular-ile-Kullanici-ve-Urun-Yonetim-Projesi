@@ -5,7 +5,8 @@
       <div class="col-sm-4">
           <div class="card">
               <div class="img-container">
-                  <img src="{{ user?.profileImageUrl }}" class="card-img-top img-thumbnail" alt="{{ user?.name }}">
+                  <img *ngIf="user.profileImageUrl" src="{{ user?.profileImageUrl }}" class="card-img-top img-thumbnail" alt="{{ user?.name }}">
+                  <img *ngIf="!user.profileImageUrl" src="{{ 'assets/user.png'  }}" class="card-img-top img-thumbnail" alt="{{ user?.name }}">
               </div>
               <div class="card-body">
                   <div>

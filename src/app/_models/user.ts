@@ -12,6 +12,7 @@ export interface User {
     country: string;
     introduction: string;
     hobbies: string;
+    imageUrl: string;
     profileImageUrl: string; // isProfile true olan kısım UserForDetailsDTO'da
     image: image; // array kaldırıldı.. UserForListDTO daki image ismi ile aynı olmalı.. public ImagesForDetails Image { get; set; }
     images : image[]; //  UserForDetailsDTO daki images ismi ile aynı olmalı.. public List<ImagesForDetails> Images { get; set; }.. ayrıca List olduğu için image[] tanımlandı..

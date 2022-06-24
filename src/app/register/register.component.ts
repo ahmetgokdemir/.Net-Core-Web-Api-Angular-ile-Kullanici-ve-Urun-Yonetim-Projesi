@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertifyService } from '../services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 
@@ -11,7 +12,8 @@ export class RegisterComponent implements OnInit {
 
   model:any = {};
 
-  constructor(private authService : AuthService, private aletify: AlertifyService) { }
+  constructor(private authService : AuthService, private aletify: AlertifyService,
+    private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +26,12 @@ export class RegisterComponent implements OnInit {
     }, error => {
       // console.log(error);
       this.aletify.error(error);
-    });
+    } , () => {  // kullanıcı oluşturulduktan sonra kullanıcıyı yönlendirme işlemi.. yönlendirmeden önce login olmalı..
+      this.authService.login(this.model).subscribe(()=> {
+        this.route.navigate(['/members']);
+      })
+    }
+    );
 
   }
 
