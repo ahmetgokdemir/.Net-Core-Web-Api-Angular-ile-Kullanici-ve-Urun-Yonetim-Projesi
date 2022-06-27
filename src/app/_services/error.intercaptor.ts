@@ -16,6 +16,11 @@ export class ErrorInterceptor implements HttpInterceptor { // ErrorInterceptor Ã
 
                 // client kaynaklÄ± hata
                 if(response.status === 400) {
+
+                  if (response.error) {
+                    return throwError(response.error);
+                }
+
                   if(response.error.error) {
                    const serverError = response.error;
                    let errorMessage='';

@@ -25,4 +25,8 @@ export class UserService
       return this.http.put(this.baseUrl + id, user);
   }
 
+  followUser(followerId: number, userId: number) {
+    return this.http.post(this.baseUrl + followerId + '/follow/' + userId,{});
+}
+
 }

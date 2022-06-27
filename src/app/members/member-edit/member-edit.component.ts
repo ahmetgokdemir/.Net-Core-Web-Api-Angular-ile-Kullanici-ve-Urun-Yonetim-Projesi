@@ -26,12 +26,15 @@ export class MemberEditComponent implements OnInit {
  constructor(private route: ActivatedRoute) { }
 */
   ngOnInit(): void {
-    //this.getUser(); // call function
+    //this.getUser(); // call function.. artık resolver kullanılacak bu koda gerek yok..
+
     this.route.data.subscribe(data=> { // data: resolver dan gelen bilgi..
       this.user = data.user;  // user => router.ts den gelir.. resolve: {user: MemberEditResolver}
     })
   }
 
+
+  // artık resolver kullanılacak bu koda gerek yok..
   // navbarda authService.decodedToken.unique_name kullandığımız gibi..
   /*getUser() {
     this.userService.getUser(this.authService.decodedToken.nameid).subscribe(user=> {
