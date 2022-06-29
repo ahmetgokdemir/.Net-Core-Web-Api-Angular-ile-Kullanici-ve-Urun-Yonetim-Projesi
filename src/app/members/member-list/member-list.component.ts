@@ -12,6 +12,9 @@ import { AlertifyService } from '../../services/alertify.service';
 export class MemberListComponent implements OnInit {
 
   users: User[] = []; // = [] kısmını ben ekledim..
+  public loading = false;
+
+  userParams:any = {};
 
   constructor(private userService: UserService, private alertify: AlertifyService) { }
 
@@ -21,13 +24,21 @@ export class MemberListComponent implements OnInit {
 
   getUsers() {
 
+    this.loading = true;
+
+
+
     // users, UserForListDTO'ya karşılık gelir.. çünkü serverapp'de var result = _mapper.Map<IEnumerable<UserForListDTO>>(users); kodu mevcut
     // dolayısıyla users: User[] = []; ile UserForListDTO eşleşir
 
-    this.userService.getUsers().subscribe(users => {
+    this.userService.getUsers(null,this.userParams).subscribe(users => {
+      this.loading = false;
+
       this.users = users;
       console.log(users[0].image.description);
     }, err => {
+      this.loading = false;
+
       this.alertify.error(err);
     })
   }

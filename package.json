@@ -23,6 +23,7 @@
     "alertifyjs": "^1.13.1",
     "bootstrap": "^4.6.1",
     "jquery": "^3.6.0",
+    "ngx-loading": "^13.0.1",
     "ngx-timeago": "^2.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
