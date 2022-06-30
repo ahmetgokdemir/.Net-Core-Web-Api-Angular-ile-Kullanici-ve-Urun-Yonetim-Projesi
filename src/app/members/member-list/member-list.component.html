@@ -48,6 +48,15 @@
       </div>
 
       <div class="col-md-9">
+        <div class="card mb-3">
+          <div class="card-body">
+              <select name="orderby" [(ngModel)]="userParams.orderby" (change)="getUsers()" class="custom-select custom-select-sm col-3 float-right">
+                  <option value="age">Age</option>
+                  <option value="created">Created</option>
+                  <option value="lastactive">LastActive</option>
+              </select>
+          </div>
+      </div>
         <div class="row">
           <div *ngFor="let user of users" class="col-lg-4 col-md-4 col-sm-6 col-12">
               <div class="user_profile_info">

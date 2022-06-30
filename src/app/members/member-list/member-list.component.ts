@@ -14,11 +14,16 @@ export class MemberListComponent implements OnInit {
   users: User[] = []; // = [] kısmını ben ekledim..
   public loading = false;
 
-  userParams:any = {};
+  // query string
+  userParams:any = {}; // [(ngModel)]="userParams.minAge" ile data bind edildi ve getUsers(null,this.userParams) ile data push edildi..
 
   constructor(private userService: UserService, private alertify: AlertifyService) { }
 
   ngOnInit(): void {
+    //this.userParams.orderby = "lastactive"; // default value set edildi..
+    // this.userParams.gender = "female";
+    // this.userParams.minAge = 20;
+    // this.userParams.maxAge = 40;
     this.getUsers(); // call function
   }
 

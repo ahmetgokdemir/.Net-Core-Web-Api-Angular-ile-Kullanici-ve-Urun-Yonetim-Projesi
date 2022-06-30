@@ -27,7 +27,7 @@ export class UserService
       }
 
       if(userParams!=null) {
-        if(userParams.gender!=null)
+        if(userParams.gender!=null) // member-list.html'de ngmodel ile data bind edilmişti..
             params = params.append('gender',userParams.gender);
         if(userParams.minAge!=null)
             params = params.append('minAge',userParams.minAge);
@@ -37,6 +37,8 @@ export class UserService
             params = params.append('country',userParams.country);
         if(userParams.city!=null)
             params = params.append('city',userParams.city);
+        if(userParams.orderby!=null)
+            params = params.append("orderby", userParams.orderby);
     }
 
       return this.http.get<User[]>(this.baseUrl, {params: params});
